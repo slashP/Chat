@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FE2834EB-3B96-4443-9A93-51DE22462DCA}</ProjectGuid>
+    <ProjectGuid>{AB147E22-0B73-4E82-8CA4-2D22CDA2536B}</ProjectGuid>
     <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CChat</RootNamespace>
-    <AssemblyName>CChat</AssemblyName>
+    <RootNamespace>ChatApp</RootNamespace>
+    <AssemblyName>ChatApp</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -20,7 +20,6 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,22 +52,24 @@
       <HintPath>..\packages\SignalR.Server.0.5.2\lib\net40\SignalR.dll</HintPath>
     </Reference>
     <Reference Include="SignalR.Hosting.AspNet">
-      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.2\lib\net45\SignalR.Hosting.AspNet.dll</HintPath>
+      <HintPath>..\packages\SignalR.Hosting.AspNet.0.5.2\lib\net40\SignalR.Hosting.AspNet.dll</HintPath>
     </Reference>
     <Reference Include="SignalR.Hosting.Common">
       <HintPath>..\packages\SignalR.Hosting.Common.0.5.2\lib\net40\SignalR.Hosting.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -126,7 +127,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20505.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.0.0\lib\WebGrease.dll</HintPath>
@@ -195,6 +195,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <DependentUpon>jquery.validate.unobtrusive.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -262,7 +263,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:8266/</IISUrl>
+          <IISUrl>http://localhost:10046/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
