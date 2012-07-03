@@ -1,0 +1,45 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "Home";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var user = "@(User.Identity.Name)";
+        $(function () {
+            var conChat = $.connection.chat;
+            conChat.addMessage = function (message) {
+                if (message !== '') {
+                    $("#disMess").children("div:gt(40)").remove();
+                    $('#disMess').prepend('<div class="row chatMessage"><div class="user">' + message.User + '</div>' + message.Message + '</div>');
+                }
+            };
+
+            $("#txtMess").keyup(function (event) {
+                if (event.keyCode == 13) {
+                    if ($('#txtMess').val() !== '') {
+                        conChat.send({ User: user, Message: $('#txtMess').val() });
+                        $('#txtMess').val('');
+                    }
+                }
+            });
+
+            $("#btnSend").click(function () {
+                if ($('#txtMess').val() !== '') {
+                    conChat.send({ User: user, Message: $('#txtMess').val() });
+                    $('#txtMess').val('');
+                }
+            });
+            $.connection.hub.start(function () {
+                conChat.getMessages();
+            });
+            
+        });
+        
+    });
+   
+</script>
+<h3>Chat</h3>
+<input type="text" id="txtMess" style="width: 300px; height: 40px;"/>
+<input type="button" id="btnSend" value="Send" />
+<div id="disMess"></div>
