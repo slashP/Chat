@@ -778,9 +778,21 @@ tr.pager td {
     background: white;
     margin: 2px;
     padding: 2px;
-    
+    clear: both;
 }
 .user
 {
+    float: left;
     font-weight: bold;
+}
+
+.message {
+    clear: both;
+}
+
+.time {
+    float: right;
+    width: 100px;
+    text-align: right;
+    font-size: smaller;
 }

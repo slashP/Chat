@@ -6,9 +6,10 @@
         $(function () {
             var conChat = $.connection.chat;
             conChat.addMessage = function (message) {
+                console.log(message);
                 if (message !== '') {
                     $("#disMess").children("div:gt(40)").remove();
-                    $('#disMess').prepend('<div class="row chatMessage"><div class="user">' + message.User + '</div>' + message.Message + '</div>');
+                    $('#disMess').prepend('<div class="row chatMessage"><div class="user">' + message.User + '</div><div class="time">' + message.Time + '</div><div class="message">' + message.Message + '</div></div>');
                 }
             };
 

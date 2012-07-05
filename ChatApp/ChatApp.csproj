@@ -153,6 +153,11 @@
     <Compile Include="Membership\CodeFirstRoleProvider.cs" />
     <Compile Include="Membership\Crypto.cs" />
     <Compile Include="Membership\WebSecurity.cs" />
+    <Compile Include="Migrations\201207051843014_InitialCreate.cs" />
+    <Compile Include="Migrations\201207051843014_InitialCreate.Designer.cs">
+      <DependentUpon>201207051843014_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ChatMessage.cs" />
     <Compile Include="Models\DataContext.cs" />
