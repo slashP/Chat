@@ -38,11 +38,12 @@ namespace CiberChat.Controllers
         public void Send(ChatMessage chatMessage)
         {
             var tagRegex = new Regex(@"<[^>]+>");
-            if (chatMessage.Message.Length > 400 || tagRegex.Match(chatMessage.Message).Success)
+            if (chatMessage.Message.Length > 400 || tagRegex.Match(chatMessage.Message).Success || Context.User == null)
             {
                 return;
             }
             chatMessage.Time = DateTime.UtcNow.AddHours(2);
+            chatMessage.User = Context.User.Identity.Name;
             _db.ChatMessages.Add(chatMessage);
             _db.SaveChanges();
             Clients.addMessage(new{Time = DateTime.UtcNow.AddHours(2).ToString(DateTimeFormat, new CultureInfo("nb-NO")), chatMessage.User, chatMessage.Message});
@@ -99,17 +100,13 @@ namespace CiberChat.Controllers
 
         public Task Disconnect()
         {
-            var user = GetCurrentUser();
-            if(user != null)
+            lock (_clients)
             {
-                lock (_clients)
+                string user;
+                if (_clients.TryGetValue(Context.ConnectionId, out user))
                 {
-                    string newUser;
-                    if (!_clients.TryGetValue(Context.ConnectionId, out newUser))
-                    {
-                        _clients.Remove(Context.ConnectionId);
-                        return Clients.updateOnlineUsers(GetConnectedUsersList());
-                    }
+                    _clients.Remove(Context.ConnectionId);
+                    return Clients.updateOnlineUsers(GetConnectedUsersList());
                 }
             }
             return new Task(() => {});
@@ -117,7 +114,8 @@ namespace CiberChat.Controllers
 
         private static IEnumerable<OnlineUser> GetConnectedUsersList()
         {
-            return _clients.Values.Select(x => new OnlineUser {username = x}).ToList().DistinctBy(x => x.username);
+            var connectedUsersList = _clients.Values.Select(x => new OnlineUser {username = x}).DistinctBy(x => x.username).ToList();
+            return connectedUsersList;
         }
 
         public class OnlineUser
