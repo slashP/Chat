@@ -162,6 +162,7 @@
     <Compile Include="Models\ChatMessage.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\LinqExtensions.cs" />
     <Compile Include="Util\MobileDisplayMode.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,12 +249,16 @@
     <Content Include="Views\Home\Index.Mobile.cshtml" />
     <Content Include="Views\Home\_ChatMobile.cshtml" />
     <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
+    <Content Include="Views\Shared\_ChatJavascript.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

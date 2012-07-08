@@ -1,0 +1,49 @@
+﻿@model dynamic
+
+<script id="usersTemplate" type="text/x-jquery-tmpl"> 
+    <div>
+        ${username}
+    </div>
+</script> 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var user = "@(User.Identity.Name)";
+        $(function () {
+            var conChat = $.connection.chat;
+            
+            conChat.addAllMessages = function (messages) {
+                for (var i = 0; i < messages.length; i++) {
+                    var message = messages[i];
+                    this.addMessage(message);
+                }
+            };
+
+            conChat.updateOnlineUsers = function (users) {
+                $("#users").html($("#usersTemplate").tmpl(users));
+            };
+
+            $("#txtMess").keyup(function (event) {
+                if (event.keyCode == 13) {
+                    if ($('#txtMess').val() !== '') {
+                        conChat.send({ User: user, Message: $('#txtMess').val() });
+                        $('#txtMess').val('');
+                    }
+                }
+            });
+
+            $("#btnSend").click(function () {
+                if ($('#txtMess').val() !== '') {
+                    conChat.send({ User: user, Message: $('#txtMess').val() });
+                    $('#txtMess').val('');
+                }
+            });
+
+            $.connection.hub.start(function () {
+                conChat.getAllMessages();
+            });
+        });
+        
+    });
+   
+</script>

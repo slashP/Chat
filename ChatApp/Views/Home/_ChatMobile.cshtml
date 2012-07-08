@@ -1,49 +1,13 @@
 ﻿@model dynamic
-
+@Html.Partial("_ChatJavascript")
 <script type="text/javascript">
-    $(document).ready(function () {
-        var user = "@(User.Identity.Name)";
-        $(function () {
-            var conChat = $.connection.chat;
-            conChat.addMessage = function (message) {
-                if (message !== '') {
-                    $("#disMess").children("li:gt(40)").remove();
-                    $('#disMess').prepend('<li class="row chatMessage"><span class="user">' + message.User + '</span><span class="time">' + message.Time + '</span><br /><span class="message">' + message.Message + '</span></li>');
-                }
-                $("#disMess").listview("refresh");
-
-            };
-            
-            conChat.addAllMessages = function (messages) {
-                for (var i = 0; i < messages.length; i++) {
-                    var message = messages[i];
-                    this.addMessage(message);
-                }
-            };
-
-            $("#txtMess").keyup(function (event) {
-                if (event.keyCode == 13) {
-                    if ($('#txtMess').val() !== '') {
-                        conChat.send({ User: user, Message: $('#txtMess').val() });
-                        $('#txtMess').val('');
-                    }
-                }
-            });
-
-            $("#btnSend").click(function () {
-                if ($('#txtMess').val() !== '') {
-                    conChat.send({ User: user, Message: $('#txtMess').val() });
-                    $('#txtMess').val('');
-                }
-            });
-
-            $.connection.hub.start(function () {
-                conChat.getAllMessages();
-            });
-        });
-        
-    });
-   
+    $.connection.chat.addMessage = function (message) {
+        if (message !== '') {
+            $("#disMess").children("li:gt(40)").remove();
+            $('#disMess').prepend('<li class="row chatMessage"><span class="user">' + message.User + '</span><span class="time">' + message.Time + '</span><br /><span class="message">' + message.Message + '</span></li>');
+        }
+        $("#disMess").listview("refresh");
+    };
 </script>
 <input type="text" id="txtMess" style="width: 300px; height: 40px;"/>
 <input type="button" id="btnSend" value="Send" data-role="button" />

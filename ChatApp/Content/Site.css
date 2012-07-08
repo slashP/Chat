@@ -796,3 +796,24 @@ tr.pager td {
     text-align: right;
     font-size: smaller;
 }
+#users {
+    float: right;
+    width: 200px;
+    background: #fff;
+}
+
+#userList {
+    margin-top: -35px;
+    float: right;
+    width: 200px;
+}
+
+#disMess {
+    float: left;
+    width: 400px;
+}
+
+#chatContainer {
+    width: 700px;
+    display: inline-block;
+}
