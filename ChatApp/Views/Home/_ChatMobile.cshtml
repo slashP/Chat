@@ -1,9 +1,5 @@
 ﻿@model dynamic
 
-@{
-    var asdf = "";
-}
-
 <script type="text/javascript">
     $(document).ready(function () {
         var user = "@(User.Identity.Name)";
@@ -49,7 +45,6 @@
     });
    
 </script>
-<h3>Chat</h3>
 <input type="text" id="txtMess" style="width: 300px; height: 40px;"/>
 <input type="button" id="btnSend" value="Send" data-role="button" />
 <div data-role="content">
