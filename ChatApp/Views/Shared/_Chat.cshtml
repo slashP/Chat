@@ -6,10 +6,16 @@
         $(function () {
             var conChat = $.connection.chat;
             conChat.addMessage = function (message) {
-                console.log(message);
                 if (message !== '') {
                     $("#disMess").children("div:gt(40)").remove();
                     $('#disMess').prepend('<div class="row chatMessage"><div class="user">' + message.User + '</div><div class="time">' + message.Time + '</div><div class="message">' + message.Message + '</div></div>');
+                }
+            };
+            
+            conChat.addAllMessages = function (messages) {
+                for (var i = 0; i < messages.length; i++) {
+                    var message = messages[i];
+                    this.addMessage(message);
                 }
             };
 
@@ -30,7 +36,7 @@
             });
 
             $.connection.hub.start(function () {
-                conChat.getMessages();
+                conChat.getAllMessages();
             });
         });
         

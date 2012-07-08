@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -12,21 +13,22 @@ namespace CiberChat.Controllers
     {
         private readonly DataContext _db = new DataContext();
 
-        public void GetMessages()
+        public void GetAllMessages()
         {
             var messages = _db.ChatMessages.OrderByDescending(x => x.Id).Take(42).ToList();
             messages.Reverse();
-            foreach (var message in from chatMessage in messages let time = chatMessage.Time.HasValue
-                                                                                ? ((DateTime) chatMessage.Time).ToString("d.MMMM HH:mm:ss")
-                                                                                : string.Empty select new
-                                                                                    {
-                                                                                        chatMessage.User,
-                                                                                        chatMessage.Message,
-                                                                                        Time = time
-                                                                                    })
-            {
-                Caller.addMessage(message);
-            }
+
+            var jsonMessages = (from chatMessage in messages
+                     let time = chatMessage.Time.HasValue
+                                    ? ((DateTime) chatMessage.Time).ToString("d.MMMM HH:mm:ss", new CultureInfo("nb-NO"))
+                                    : string.Empty
+                     select new
+                         {
+                             chatMessage.User,
+                             chatMessage.Message,
+                             Time = time
+                         }).ToList();
+            Caller.addAllMessages(jsonMessages);
         }
 
         public void Send(ChatMessage chatMessage)
