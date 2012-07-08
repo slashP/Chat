@@ -1,0 +1,28 @@
+﻿
+#txtMess {
+    
+}
+
+.chatMessage {
+    margin-left: 16px;
+    background: white;
+    margin: 2px;
+    padding: 2px;
+    clear: both;
+}
+.user
+{
+    float: left;
+    font-weight: bold;
+}
+
+.message {
+    clear: both;
+}
+
+.time {
+    float: right;
+    
+    text-align: right;
+    font-size: smaller;
+}

@@ -168,8 +168,20 @@
     <Content Include="Content\bootstrap-responsive.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\ajax-loader.gif" />
+    <Content Include="Content\images\ajax-loader.png" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\icons-18-black.png" />
+    <Content Include="Content\images\icons-18-white.png" />
+    <Content Include="Content\images\icons-36-black.png" />
+    <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\jquery.mobile-1.1.0.css" />
+    <Content Include="Content\jquery.mobile-1.1.0.min.css" />
+    <Content Include="Content\jquery.mobile.structure-1.1.0.css" />
+    <Content Include="Content\jquery.mobile.structure-1.1.0.min.css" />
+    <Content Include="Content\jquery.mobile.theme-1.1.0.css" />
+    <Content Include="Content\jquery.mobile.theme-1.1.0.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -183,6 +195,10 @@
     <Content Include="Scripts\jquery-1.7.2.js" />
     <Content Include="Scripts\jquery-1.7.2.min.js">
       <DependentUpon>jquery-1.7.2.js</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.mobile-1.1.0.js" />
+    <Content Include="Scripts\jquery.mobile-1.1.0.min.js">
+      <DependentUpon>jquery.mobile-1.1.0.js</DependentUpon>
     </Content>
     <Content Include="Scripts\jquery.signalR-0.5.2.js" />
     <Content Include="Scripts\jquery.signalR-0.5.2.min.js">
@@ -243,6 +259,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Chat.cshtml" />
+    <Content Include="Views\Home\Index.Mobile.cshtml" />
+    <Content Include="Views\Home\_ChatMobile.cshtml" />
+    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
