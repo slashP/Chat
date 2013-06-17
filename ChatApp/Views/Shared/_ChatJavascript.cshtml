@@ -33,7 +33,7 @@
 
             $("#btnSend").click(function () {
                 if ($('#txtMess').val() !== '') {
-                    conChat.send({ User: user, Message: $('#txtMess').val() });
+                    conChat.send({ Message: $('#txtMess').val() });
                     $('#txtMess').val('');
                 }
             });
